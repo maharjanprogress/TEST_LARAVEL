@@ -15,5 +15,14 @@
         <li><a href="/progress/{{ $tasks[0]["id"] }}" class="btn btn-primary">{{ $tasks[0]["task"] }}</a></li>
         <li><a href="/progress/{{ $tasks[1]["id"] }}" class="btn btn-primary"> {{ $tasks[1]["task"] }}</a></li>
         <li><a href="/progress/{{ $tasks[2]["id"] }}" class="btn btn-primary">{{ $tasks[2]["task"] }}</a></li>
+
+
+        {{-- loop with a card component --}}
+        <p>Loop with a card component</p>
+        @foreach ($tasks as $task) 
+            <x-card href="/progress/{{ $task['id'] }}" :highlight="$task['id'] == 1">
+                <h3>{{ $task['task'] }}</h3>
+            </x-card>
+        @endforeach
     </ul>
 </x-layout>
