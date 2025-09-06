@@ -9,7 +9,7 @@ class NinjaController extends Controller
 {
     public function index()
     {
-        $tasks = Ninja::orderBy('created_at', 'asc')->get();
+        $tasks = Ninja::orderBy('created_at', 'asc')->paginate(2);
         return view('progress.index', ['tasks' => $tasks]);
     }
     public function show(int $id)

@@ -13,7 +13,6 @@
         <p>Without Loop</p>
         <li><a href="/progress/{{ $tasks[0]["id"] }}" class="btn btn-primary">{{ $tasks[0]["bio"] }}</a></li>
         <li><a href="/progress/{{ $tasks[1]["id"] }}" class="btn btn-primary"> {{ $tasks[1]["bio"] }}</a></li>
-        <li><a href="/progress/{{ $tasks[2]["id"] }}" class="btn btn-primary">{{ $tasks[2]["bio"] }}</a></li>
 
 
         {{-- loop with a card component --}}
@@ -24,4 +23,6 @@
             </x-card>
         @endforeach
     </ul>
+
+    {{ $tasks->links() }} {{-- pagination links --}}
 </x-layout>
