@@ -16,6 +16,10 @@ Route::get('/progress', function () {
     return view('progress.index',["greetings"=>"Hello World", "tasks" => $progress]);
 });
 
+Route::get('/progress/create', function () {
+    return view('progress.create',);
+});
+
 Route::get('/progress/{id}', function (int $id) {
     $progress = [
         ['id' => 1, 'task' => 'Task 1', 'status' => 'Completed'],
@@ -25,3 +29,4 @@ Route::get('/progress/{id}', function (int $id) {
 
     return view('progress.show',["id"=>$id, "task" => $progress[$id - 1]['status']]);
 });
+

@@ -1,10 +1,4 @@
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Showing {{$id}}</title>
-</head>
-<body>
+<x-layout>
     <h1>
         Showing {{$id}}...
     </h1>
@@ -21,5 +15,4 @@
     </h2>
 
     <a href="/progress" class="btn btn-primary">Go Back</a>
-</body>
-</html>
+</x-layout>
