@@ -9,7 +9,7 @@ class NinjaController extends Controller
 {
     public function index()
     {
-        $tasks = Ninja::orderBy('created_at', 'asc')->paginate(2);
+        $tasks = Ninja::with('dojo')->orderBy('created_at', 'asc')->paginate(10); //with() will eager load the related dojo data
         return view('progress.index', ['tasks' => $tasks]);
     }
     public function show(int $id)

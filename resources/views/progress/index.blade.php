@@ -20,6 +20,7 @@
         @foreach ($tasks as $task) 
             <x-card href="{{ route('progress.show', $task->id) }}" :highlight="$task['id'] == 1">
                 <h3>{{ $task['bio'] }}</h3>
+                <p>{{ $task->dojo->name }}</p>
             </x-card>
         @endforeach
     </ul>
