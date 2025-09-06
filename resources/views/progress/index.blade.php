@@ -4,7 +4,7 @@
         {{-- looping through tasks array --}}
         <p>Loop used</p>
         @foreach ($tasks as $task) 
-            <li><a href="/progress/{{ $task['id'] }}" class="btn btn-primary">{{ $task['bio'] }}</a></li>
+            <li><a href="{{ route('progress.show', $task->id) }}" class="btn btn-primary">{{ $task['bio'] }}</a></li>
             
         @endforeach
 
@@ -19,7 +19,7 @@
         {{-- loop with a card component --}}
         <p>Loop with a card component</p>
         @foreach ($tasks as $task) 
-            <x-card href="/progress/{{ $task['id'] }}" :highlight="$task['id'] == 1">
+            <x-card href="{{ route('progress.show', $task->id) }}" :highlight="$task['id'] == 1">
                 <h3>{{ $task['bio'] }}</h3>
             </x-card>
         @endforeach

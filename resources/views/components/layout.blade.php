@@ -9,8 +9,8 @@
         <h1>Laravel Progress</h1>
         <nav>
             <a href="/">Home</a> |
-            <a href="/progress">Progress</a> |
-            <a href="/progress/create">Create Progress</a>
+            <a href="{{ route('progress.index') }}">Progress</a> |
+            <a href="{{ route('progress.create') }}">Create Progress</a>
         </nav>
     </header>
 
