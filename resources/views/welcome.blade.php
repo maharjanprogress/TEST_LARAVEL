@@ -7,6 +7,6 @@
 <body>
     <h1>Welcome to Laravel!</h1>
     <p>This is a simple Laravel application.</p>
-    <a href="" class="btn">Test</a>
+    <a href="/progress" class="btn">Test</a>
 </body>
 </html>
