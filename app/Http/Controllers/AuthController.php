@@ -22,14 +22,19 @@ class AuthController extends Controller
                 'password' => bcrypt($validatedData['password']),
             ]
         );
-        $token = auth('api')->login($user);
+        /** @var \Tymon\JWTAuth\JWTGuard $guard */
+        $guard = auth('api');
+        $token = $guard->login($user);
         return $this -> respondWithToken($token);
     }
     public function login()
     {
         $credentials = request(['email', 'password']);
 
-        if (! $token = auth('api')->attempt($credentials)) {
+        /** @var \Tymon\JWTAuth\JWTGuard $guard */
+        $guard = auth('api');
+
+        if (! $token = $guard->attempt($credentials)) {
             return response()->json(['error' => 'Unauthorized'], 401);
         }
 
@@ -42,22 +47,28 @@ class AuthController extends Controller
 
     public function logout()
     {
-        auth('api')->logout();
+        /** @var \Tymon\JWTAuth\JWTGuard $guard */
+        $guard = auth('api');
+        $guard->logout();
 
         return response()->json(['message' => 'Successfully logged out']);
     }
 
     public function refresh()
     {
-        return $this->respondWithToken(auth('api')->refresh());
+        /** @var \Tymon\JWTAuth\JWTGuard $guard */
+        $guard = auth('api');
+        return $this->respondWithToken($guard->refresh());
     }
 
     protected function respondWithToken($token)
     {
+        /** @var \Tymon\JWTAuth\JWTGuard $guard */
+        $guard = auth('api');
         return response()->json([
             'access_token' => $token,
             'token_type' => 'bearer',
-            'expires_in' => auth('api')->factory()->getTTL() * 60
+            'expires_in' => $guard->factory()->getTTL() * 60
         ]);
     }
 }
