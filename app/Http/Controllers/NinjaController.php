@@ -54,4 +54,9 @@ class NinjaController extends Controller
         return view('progress.create',['dojos' => $dojo]);
     }
 
+    public function destroy(Ninja $id){
+        $id->delete();
+        return redirect()->route('progress.index');
+    }
+
 }

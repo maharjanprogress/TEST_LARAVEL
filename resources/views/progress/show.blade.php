@@ -14,5 +14,12 @@
         This is Status of the task: {{$task}}.
     </h2>
 
+    <form action="{{ route('progress.destroy', $id) }}" method="POST">
+        @csrf
+        @method('delete')
+        <button type="submit" class="btn btn-danger">Delete</button>
+    </form>
+
+
     <a href="/progress" class="btn btn-primary">Go Back</a>
 </x-layout>

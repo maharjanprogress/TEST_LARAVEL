@@ -15,3 +15,5 @@ Route::get('/progress/{id}', [NinjaController::class, 'show'])->name('progress.s
 
 Route::post('/storeThisthing', [NinjaController::class,'store'])->name('progress.store');
 
+Route::delete('/progress/{id}', [NinjaController::class,'destroy'])->name('progress.destroy');
+
