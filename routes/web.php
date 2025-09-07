@@ -13,3 +13,5 @@ Route::get('/progress/create', [NinjaController::class, 'create'])->name('progre
 
 Route::get('/progress/{id}', [NinjaController::class, 'show'])->name('progress.show');
 
+Route::post('/storeThisthing', [NinjaController::class,'store'])->name('progress.store');
+

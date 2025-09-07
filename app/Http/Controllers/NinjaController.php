@@ -1,9 +1,14 @@
 <?php
 
 namespace App\Http\Controllers;
+
+use App\Models\Dojo;
 use App\Models\Ninja;
 
 use Illuminate\Http\Request;
+use Laravel\Pail\ValueObjects\Origin\Console;
+use Psy\Readline\Hoa\Console as HoaConsole;
+use SebastianBergmann\Environment\Console as EnvironmentConsole;
 
 class NinjaController extends Controller
 {
@@ -33,11 +38,20 @@ class NinjaController extends Controller
 
     public function store(Request $request)
     {
-        return $request->all();
+        printf('Store method called');
+        $validated = $request->validate([
+            'name' => 'required|string|max:255',
+            'skill'=> 'required|integer|min:0|max:100',
+            'bio' => 'required|string|min:10',
+            'dojo_id' => 'required|exists:dojos,id',
+        ]);
+        $ninja =Ninja::create($validated);
+        return redirect()->route('progress.show', ['id' => $ninja->id]);
     }
     public function create()
     {
-        return view('progress.create',);
+        $dojo = Dojo::all();
+        return view('progress.create',['dojos' => $dojo]);
     }
 
 }
