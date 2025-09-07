@@ -40,7 +40,7 @@ class NinjaController extends Controller
     {
         printf('Store method called');
         $validated = $request->validate([
-            'name' => 'required|string|max:255',
+            'name' => 'required|string|max:50',
             'skill'=> 'required|integer|min:0|max:100',
             'bio' => 'required|string|min:10',
             'dojo_id' => 'required|exists:dojos,id',
